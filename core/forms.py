@@ -22,3 +22,7 @@ class RegisterForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Este email já está em uso.")
         return email
+    
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nome de Usuário', max_length=150, required=True)
+    password = forms.CharField(label='Senha', widget=forms.PasswordInput, required=True)

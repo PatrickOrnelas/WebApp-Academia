@@ -117,11 +117,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_FILES_DIRS = (
+# URL to use when referring to static files located in STATIC_ROOT.
+# In development it's common to set a leading slash.
+STATIC_URL = '/static/'
+
+# Directories where Django will additionally look for static files (during
+# development and when running collectstatic). Must be named STATICFILES_DIRS
+# (no underscore) so django.contrib.staticfiles can find them.
+STATICFILES_DIRS = [
     BASE_DIR / 'base_static',
-)
-STATIC_ROOT = BASE_DIR / 'static' # collectstatic
+]
+
+# Directory where `collectstatic` will collect static files for production
+STATIC_ROOT = BASE_DIR / 'static'  # collectstatic
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
