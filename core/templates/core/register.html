@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Registro</title>
+</head>
+<body>
+    <h1>Registro de Usuário</h1>
+    <form action="{{form_action}}" method="POST">
+        {% csrf_token %}
+        <div class="form-content">
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                    {% if field.help_text %}
+                        <p class="help_text"> {{ field.help_text}}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
